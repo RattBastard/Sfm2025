@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Okt 14. 19:52
+-- Létrehozás ideje: 2025. Okt 15. 11:48
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -71,7 +71,9 @@ CREATE TABLE `terem` (
 -- A tábla indexei `foglalás`
 --
 ALTER TABLE `foglalás`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `TeremID` (`TeremID`),
+  ADD KEY `TanárID` (`TanárID`);
 
 --
 -- A tábla indexei `tanár`
@@ -106,6 +108,17 @@ ALTER TABLE `tanár`
 --
 ALTER TABLE `terem`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- Megkötések a kiírt táblákhoz
+--
+
+--
+-- Megkötések a táblához `foglalás`
+--
+ALTER TABLE `foglalás`
+  ADD CONSTRAINT `foglalás_ibfk_1` FOREIGN KEY (`TeremID`) REFERENCES `terem` (`ID`),
+  ADD CONSTRAINT `foglalás_ibfk_2` FOREIGN KEY (`TanárID`) REFERENCES `tanár` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
