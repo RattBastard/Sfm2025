@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Okt 15. 11:48
+-- Létrehozás ideje: 2025. Nov 11. 16:46
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -32,7 +32,7 @@ USE `sfm2025`;
 CREATE TABLE `foglalás` (
   `ID` int(10) NOT NULL,
   `TeremID` int(10) NOT NULL,
-  `TanárID` int(10) NOT NULL,
+  `TárgyID` int(10) NOT NULL,
   `Esemény` varchar(255) DEFAULT NULL,
   `KezdIdő` datetime NOT NULL,
   `VégIdő` datetime NOT NULL
@@ -52,6 +52,18 @@ CREATE TABLE `tanár` (
 -- --------------------------------------------------------
 
 --
+-- Tábla szerkezet ehhez a táblához `tanítja`
+--
+
+CREATE TABLE `tanítja` (
+  `ID` int(10) NOT NULL,
+  `TárgyID` int(10) NOT NULL,
+  `TanárID` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Tábla szerkezet ehhez a táblához `terem`
 --
 
@@ -61,6 +73,18 @@ CREATE TABLE `terem` (
   `Teremszám` int(3) NOT NULL,
   `Gépterem` tinyint(1) NOT NULL,
   `Nagyterem` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `tárgy`
+--
+
+CREATE TABLE `tárgy` (
+  `ID` int(10) NOT NULL,
+  `Név` varchar(255) NOT NULL,
+  `Félév` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
@@ -73,7 +97,7 @@ CREATE TABLE `terem` (
 ALTER TABLE `foglalás`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `TeremID` (`TeremID`),
-  ADD KEY `TanárID` (`TanárID`);
+  ADD KEY `TárgyID` (`TárgyID`);
 
 --
 -- A tábla indexei `tanár`
@@ -82,10 +106,24 @@ ALTER TABLE `tanár`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- A tábla indexei `tanítja`
+--
+ALTER TABLE `tanítja`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `TárgyID` (`TárgyID`),
+  ADD KEY `TanárID` (`TanárID`);
+
+--
 -- A tábla indexei `terem`
 --
 ALTER TABLE `terem`
   ADD UNIQUE KEY `ID` (`ID`);
+
+--
+-- A tábla indexei `tárgy`
+--
+ALTER TABLE `tárgy`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- A kiírt táblák AUTO_INCREMENT értéke
@@ -104,9 +142,21 @@ ALTER TABLE `tanár`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT a táblához `tanítja`
+--
+ALTER TABLE `tanítja`
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT a táblához `terem`
 --
 ALTER TABLE `terem`
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT a táblához `tárgy`
+--
+ALTER TABLE `tárgy`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
@@ -118,7 +168,14 @@ ALTER TABLE `terem`
 --
 ALTER TABLE `foglalás`
   ADD CONSTRAINT `foglalás_ibfk_1` FOREIGN KEY (`TeremID`) REFERENCES `terem` (`ID`),
-  ADD CONSTRAINT `foglalás_ibfk_2` FOREIGN KEY (`TanárID`) REFERENCES `tanár` (`ID`);
+  ADD CONSTRAINT `foglalás_ibfk_2` FOREIGN KEY (`TárgyID`) REFERENCES `tárgy` (`ID`);
+
+--
+-- Megkötések a táblához `tanítja`
+--
+ALTER TABLE `tanítja`
+  ADD CONSTRAINT `tanítja_ibfk_1` FOREIGN KEY (`TárgyID`) REFERENCES `tárgy` (`ID`),
+  ADD CONSTRAINT `tanítja_ibfk_2` FOREIGN KEY (`TanárID`) REFERENCES `tanár` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
