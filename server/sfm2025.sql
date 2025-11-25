@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Nov 11. 16:46
+-- Létrehozás ideje: 2025. Nov 25. 13:42
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -38,6 +38,14 @@ CREATE TABLE `foglalás` (
   `VégIdő` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `foglalás`
+--
+
+INSERT INTO `foglalás` (`ID`, `TeremID`, `TárgyID`, `Esemény`, `KezdIdő`, `VégIdő`) VALUES
+(1, 1, 3, NULL, '2025-11-19 12:00:00', '2025-11-19 14:00:00'),
+(2, 3, 5, NULL, '2025-12-12 10:00:00', '2025-12-12 12:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +56,18 @@ CREATE TABLE `tanár` (
   `ID` int(10) NOT NULL,
   `Név` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `tanár`
+--
+
+INSERT INTO `tanár` (`ID`, `Név`) VALUES
+(1, 'Gipsz Jakab'),
+(2, 'Dr. Hát Izsák'),
+(3, 'Kemény Szilárd'),
+(4, 'Dr. Fekete Barna'),
+(5, 'Dr. Szabó Ilona'),
+(6, 'Dr. Fehér Piroska');
 
 -- --------------------------------------------------------
 
@@ -61,6 +81,18 @@ CREATE TABLE `tanítja` (
   `TanárID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `tanítja`
+--
+
+INSERT INTO `tanítja` (`ID`, `TárgyID`, `TanárID`) VALUES
+(1, 2, 6),
+(2, 3, 4),
+(3, 1, 1),
+(4, 5, 3),
+(5, 6, 5),
+(6, 4, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -69,11 +101,22 @@ CREATE TABLE `tanítja` (
 
 CREATE TABLE `terem` (
   `ID` int(10) NOT NULL,
-  `Emelet` int(1) NOT NULL,
+  `Emelet` int(1) DEFAULT NULL,
   `Teremszám` int(3) NOT NULL,
   `Gépterem` tinyint(1) NOT NULL,
   `Nagyterem` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `terem`
+--
+
+INSERT INTO `terem` (`ID`, `Emelet`, `Teremszám`, `Gépterem`, `Nagyterem`) VALUES
+(1, 0, 1, 0, 1),
+(2, 2, 201, 0, 1),
+(3, 1, 106, 1, 0),
+(4, 1, 102, 0, 0),
+(5, 3, 310, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -86,6 +129,18 @@ CREATE TABLE `tárgy` (
   `Név` varchar(255) NOT NULL,
   `Félév` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `tárgy`
+--
+
+INSERT INTO `tárgy` (`ID`, `Név`, `Félév`) VALUES
+(1, 'Operációs rendszerek PTI', 1),
+(2, 'Elektronika', 1),
+(3, 'Programozás mérnököknek 2', 3),
+(4, 'Assembly Programozás', 5),
+(5, 'Rendszerközeli programozás', 4),
+(6, 'Matematika Mérnököknek 2', 2);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -133,31 +188,31 @@ ALTER TABLE `tárgy`
 -- AUTO_INCREMENT a táblához `foglalás`
 --
 ALTER TABLE `foglalás`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `tanár`
 --
 ALTER TABLE `tanár`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT a táblához `tanítja`
 --
 ALTER TABLE `tanítja`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT a táblához `terem`
 --
 ALTER TABLE `terem`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT a táblához `tárgy`
 --
 ALTER TABLE `tárgy`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Megkötések a kiírt táblákhoz
