@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
-    @Query
-    public List<Reservation> reserve(Room room, LocalDateTime start, LocalDateTime end);
+    public List<Reservation> findByRoomID(Long roomID);
+
+    public List<Reservation> findByRoomIDAndStartLessThanAndEndGreaterThan(Long roomID, LocalDateTime start, LocalDateTime end);
 }
