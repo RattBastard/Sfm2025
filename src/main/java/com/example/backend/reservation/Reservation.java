@@ -19,6 +19,8 @@ public class Reservation {
     private Long roomID;
     private Long subjectID;
     private String event;
+    @Column(name = "start_time")
     private LocalDateTime start;
+    @Column(name = "end_time")
     private LocalDateTime end;
 }

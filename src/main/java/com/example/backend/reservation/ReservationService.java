@@ -1,6 +1,7 @@
 package com.example.backend.reservation;
 
 import com.example.backend.room.Room;
+import com.example.backend.room.RoomRepository;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
@@ -14,13 +15,15 @@ import java.util.stream.Collectors;
 public class ReservationService {
     @Autowired
     private  ReservationRepository reservationRepository;
+    private RoomRepository roomRepository;
 
     public List<Reservation> getAllReservation() {
         return reservationRepository.findAll();
     }
 
-    public List<Reservation> findByRoomID(Long roomID) {
-        return reservationRepository.findByRoomID(roomID);
+    public List<Integer> findByFloor(int floorNumber) {
+        List<Room> rooms = roomRepository.findByFloor(floorNumber);
+        return rooms.stream().map(room -> room.getRoomNumber()).collect(Collectors.toList());
     }
 
     public boolean checkIfDateAlreadyReserved(Long roomID, LocalDateTime start, LocalDateTime end) {
