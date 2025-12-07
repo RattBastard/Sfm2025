@@ -1,15 +1,15 @@
 package com.example.backend.reservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Component
+@Service
 public class ReservationService {
     @Autowired
-    private  ReservationRepository reservationRepository;
+    private ReservationRepository reservationRepository;
 
     public List<Reservation> getAllReservation() {
         return reservationRepository.findAll();

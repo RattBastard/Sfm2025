@@ -13,9 +13,14 @@ import lombok.NoArgsConstructor;
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long roomID;
+    @Column(name = "Emelet")
     private int floor;
+    @Column(name = "Teremszam")
     private int roomNumber;
+    @Column(name = "Gepterem")
     private boolean computerRoom;
+    @Column(name = "Nagyterem")
     private boolean bigRoom;
 }

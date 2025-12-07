@@ -28,3 +28,7 @@ INSERT INTO tanitja (ID, TargyID, TanarID) VALUES
 (4, 5, 3),
 (5, 6, 5),
 (6, 4, 2);
+
+INSERT INTO `foglalas` (`ID`, `TeremID`, `TargyID`, `Esemeny`, `KezdIdo`, `VegIdo`) VALUES
+(1, 1, 3, NULL, '2025-11-19 12:00:00', '2025-11-19 14:00:00'),
+(2, 3, 5, NULL, '2025-12-12 10:00:00', '2025-12-12 12:00:00');

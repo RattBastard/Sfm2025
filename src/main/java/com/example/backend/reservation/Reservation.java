@@ -16,11 +16,14 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
+    @Column(name = "TeremID")
     private Long roomID;
+    @Column(name = "TargyID")
     private Long subjectID;
+    @Column(name = "Esemeny")
     private String event;
-    @Column(name = "start_time")
+    @Column(name = "Kezdido")
     private LocalDateTime start;
-    @Column(name = "end_time")
+    @Column(name = "Vegido")
     private LocalDateTime end;
 }

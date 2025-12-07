@@ -15,5 +15,6 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long ID;
+    @Column(name = "Nev")
     public String name;
 }
