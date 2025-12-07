@@ -11,6 +11,10 @@ public class RoomService {
     @Autowired
     private RoomRepository roomRepository;
 
+    public Room findByRoomID(Long roomID) {
+        return roomRepository.findByRoomID(roomID);
+    }
+
     public List<Integer> findByFloor(int floorNumber) {
         List<Room> rooms = roomRepository.findByFloor(floorNumber);
         return rooms.stream().map(room -> room.getRoomNumber()).collect(Collectors.toList());

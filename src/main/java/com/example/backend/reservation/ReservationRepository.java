@@ -12,4 +12,5 @@ import java.util.List;
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
     public List<Reservation> findByRoomIDAndStartLessThanAndEndGreaterThan(Long roomID, LocalDateTime start, LocalDateTime end);
+
 }
