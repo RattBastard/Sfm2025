@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.campus.CampusController"
+            prefWidth="1200" prefHeight="800">
+
+    <left>
+        <VBox spacing="10" padding="10" prefWidth="220">
+            <Label text="Emelet:" />
+            <ComboBox fx:id="floorComboBox" prefWidth="200"/>
+            <Label text="Termek:" style="-fx-padding: 8 0 0 0;" />
+            <ListView fx:id="roomsListView" prefHeight="600" prefWidth="200"/>
+        </VBox>
+    </left>
+
+    <center>
+        <AnchorPane fx:id="mapPane" style="-fx-background-color: #f7f7f7;" prefWidth="700" prefHeight="700">
+            <Rectangle fx:id="room_201" x="50" y="50" width="180" height="120"
+                       stroke="#111111" fill="#ffffff" strokeWidth="2"
+                       onMouseClicked="#onRoomClicked"/>
+            <Label layoutX="70" layoutY="80" text="201" mouseTransparent="true"/>
+
+            <Rectangle fx:id="room_202" x="260" y="50" width="180" height="120"
+                       stroke="#111111" fill="#ffffff" strokeWidth="2"
+                       onMouseClicked="#onRoomClicked"/>
+            <Label layoutX="290" layoutY="80" text="202" mouseTransparent="true"/>
+
+            <Rectangle fx:id="room_203" x="470" y="50" width="120" height="240"
+                       stroke="#111111" fill="#ffffff" strokeWidth="2"
+                       onMouseClicked="#onRoomClicked"/>
+            <Label layoutX="500" layoutY="120" text="203" mouseTransparent="true"/>
+
+        </AnchorPane>
+    </center>
+
+    <right>
+        <VBox spacing="8" padding="10" prefWidth="320">
+            <Label text="Foglalás" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <Label text="Terem:" />
+            <TextField fx:id="selectedRoomField" editable="false"/>
+
+            <Label text="Tanár:" />
+            <ComboBox fx:id="teacherComboBox" prefWidth="280">
+
+            </ComboBox>
+
+            <Label text="Tárgy / Esemény:" />
+            <TextArea fx:id="subjectTextArea" prefRowCount="3" wrapText="true"/>
+
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <VBox spacing="4">
+                    <Label text="Kezdete:"/>
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+                        <DatePicker fx:id="startDatePicker"/>
+                        <TextField fx:id="startTimeField" promptText="HH:mm" prefWidth="70"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <VBox spacing="4">
+                    <Label text="Vége:"/>
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+                        <DatePicker fx:id="endDatePicker"/>
+                        <TextField fx:id="endTimeField" promptText="HH:mm" prefWidth="70"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <Region vgrow="ALWAYS"/>
+
+            <Button text="Kész" fx:id="submitButton" onAction="#onSubmit" prefWidth="100" alignment="CENTER"/>
+        </VBox>
+    </right>
+
+    <top>
+        <HBox alignment="CENTER_LEFT" padding="10">
+            <Label text="Campus - Teremfoglaló" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+</BorderPane>
