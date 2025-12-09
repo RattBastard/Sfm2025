@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Nov 25. 13:42
+-- Létrehozás ideje: 2025. Dec 09. 19:46
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -112,15 +112,36 @@ CREATE TABLE `terem` (
 --
 
 INSERT INTO `terem` (`ID`, `Emelet`, `Teremszám`, `Gépterem`, `Nagyterem`) VALUES
--- Földszint termek
-(1, 0, 1, 0, 1),   -- Jobb középső nagy terem
-(2, 0, 2, 0, 1),   -- Bal középső terem
-(3, 0, 3, 0, 0),   -- Bal felső 1. szoba
-(4, 0, 4, 0, 0),   -- Bal felső 2. szoba
-(5, 0, 5, 0, 0),   -- Bal felső 3. szoba
-(6, 0, 6, 0, 0),   -- Bal felső 4. szoba
-(7, 0, 8, 0, 0),   -- Bal alsó 1. kis négyzet
-(8, 0, 9, 0, 0);   -- Bal alsó 2. kis négyzet
+(1, 0, 1, 0, 1),
+(2, 0, 2, 0, 0),
+(3, 0, 3, 0, 0),
+(4, 0, 4, 0, 0),
+(5, 0, 5, 0, 0),
+(6, 0, 8, 0, 0),
+(7, 0, 9, 0, 0),
+(8, 0, 0, 0, 1),
+(9, 1, 102, 0, 0),
+(10, 1, 103, 0, 0),
+(11, 1, 104, 0, 0),
+(12, 1, 105, 0, 0),
+(13, 1, 106, 1, 0),
+(14, 1, 107, 1, 0),
+(15, 1, 132, 0, 0),
+(16, 2, 201, 0, 1),
+(17, 2, 202, 0, 0),
+(18, 2, 203, 0, 0),
+(19, 2, 204, 0, 0),
+(20, 2, 205, 0, 0),
+(21, 2, 206, 0, 0),
+(22, 2, 207, 0, 0),
+(23, 3, 310, 1, 0),
+(24, 3, 311, 1, 0),
+(25, 3, 312, 1, 0),
+(26, 3, 320, 0, 0),
+(27, 3, 321, 0, 0),
+(28, 3, 322, 0, 0),
+(29, 3, 323, 0, 0),
+(30, 3, 324, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -210,7 +231,7 @@ ALTER TABLE `tanítja`
 -- AUTO_INCREMENT a táblához `terem`
 --
 ALTER TABLE `terem`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT a táblához `tárgy`
