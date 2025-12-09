@@ -8,10 +8,13 @@ INSERT INTO tanar (ID, Nev) VALUES
 
 INSERT INTO terem (ID, Emelet, Teremszam, Gepterem, Nagyterem) VALUES
 (1, 0, 1, FALSE, TRUE),
-(2, 2, 201, FALSE, TRUE),
-(3, 1, 106, TRUE, FALSE),
-(4, 1, 102, FALSE, FALSE),
-(5, 3, 310, TRUE, FALSE);
+(2, 0, 2, FALSE, TRUE),
+(3, 0, 3, FALSE, FALSE),
+(4, 0, 4, FALSE, FALSE),
+(5, 0, 5, FALSE, FALSE),
+(6, 0, 6, FALSE, FALSE),
+(7, 0, 8, FALSE, FALSE),
+(8, 0, 9, FALSE, FALSE);
 
 INSERT INTO targy (ID, Nev, Felev) VALUES
 (1, 'Operációs rendszerek PTI', 1),

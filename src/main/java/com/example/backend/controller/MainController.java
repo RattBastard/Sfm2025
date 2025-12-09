@@ -27,6 +27,12 @@ public class MainController {
     @Autowired
     private TeacherService teacherService;
 
+    @GetMapping("/")
+    @ResponseBody
+    public String home() {
+        return "Backend is running! Available endpoints: /floors, /api/rooms, /api/teachers, /api/reservations";
+    }
+
     @GetMapping("/floors")
     public String showFloors(@RequestParam (required = false) Integer floor, Model model) {
         List<String> floors = new ArrayList<>(List.of("Foldszint", "1. emelet", "2. emelet", "3. emelet"));

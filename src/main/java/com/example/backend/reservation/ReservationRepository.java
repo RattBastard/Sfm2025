@@ -13,4 +13,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     public List<Reservation> findByRoomIDAndStartLessThanAndEndGreaterThan(Long roomID, LocalDateTime start, LocalDateTime end);
 
+    // ========== NEW METHOD FOR REST API ==========
+    public List<Reservation> findByRoomID(Long roomID);
 }

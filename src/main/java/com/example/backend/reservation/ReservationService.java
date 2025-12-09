@@ -22,6 +22,7 @@ public class ReservationService {
     public void deleteByID(Long id){
         reservationRepository.deleteById(id);
     }
+
     public List<Reservation> getAllReservation() {
         return reservationRepository.findAll();
     }
@@ -46,5 +47,11 @@ public class ReservationService {
         reservation.setStart(start);
         reservation.setEnd(end);
         return reservationRepository.save(reservation);
+    }
+
+    // ========== NEW METHOD FOR REST API ==========
+
+    public List<Reservation> getReservationsByRoomId(Long roomId) {
+        return reservationRepository.findByRoomID(roomId);
     }
 }

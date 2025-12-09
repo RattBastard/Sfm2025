@@ -112,11 +112,15 @@ CREATE TABLE `terem` (
 --
 
 INSERT INTO `terem` (`ID`, `Emelet`, `Teremszám`, `Gépterem`, `Nagyterem`) VALUES
-(1, 0, 1, 0, 1),
-(2, 2, 201, 0, 1),
-(3, 1, 106, 1, 0),
-(4, 1, 102, 0, 0),
-(5, 3, 310, 1, 0);
+-- Földszint termek
+(1, 0, 1, 0, 1),   -- Jobb középső nagy terem
+(2, 0, 2, 0, 1),   -- Bal középső terem
+(3, 0, 3, 0, 0),   -- Bal felső 1. szoba
+(4, 0, 4, 0, 0),   -- Bal felső 2. szoba
+(5, 0, 5, 0, 0),   -- Bal felső 3. szoba
+(6, 0, 6, 0, 0),   -- Bal felső 4. szoba
+(7, 0, 8, 0, 0),   -- Bal alsó 1. kis négyzet
+(8, 0, 9, 0, 0);   -- Bal alsó 2. kis négyzet
 
 -- --------------------------------------------------------
 

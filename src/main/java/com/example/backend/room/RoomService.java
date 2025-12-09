@@ -23,4 +23,14 @@ public class RoomService {
     public Room findByRoomNumber(int roomNumber) {
         return roomRepository.findByRoomNumber(roomNumber);
     }
+
+    // ========== NEW METHODS FOR REST API ==========
+
+    public List<Room> findAllByFloor(int floorNumber) {
+        return roomRepository.findByFloor(floorNumber);
+    }
+
+    public List<Room> findAll() {
+        return roomRepository.findAll();
+    }
 }
